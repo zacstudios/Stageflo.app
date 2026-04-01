@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const featureCards = [
   {
     title: "Library to Live in Seconds",
@@ -42,7 +40,7 @@ export default function Home() {
     <div className="site-shell">
       <header className="top-nav">
         <a className="brand" href="#home" aria-label="StageFlo home">
-          <Image src="/stageflo-icon.png" alt="StageFlo" width={30} height={30} />
+          <img src="stageflo-icon.png" alt="StageFlo" width={30} height={30} />
           <span>StageFlo</span>
         </a>
         <nav>
