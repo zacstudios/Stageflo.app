@@ -35,6 +35,27 @@ const installSteps = {
   ],
 };
 
+const screenshotCards = [
+  {
+    title: "Operator Workspace",
+    body: "Playlist planning, preview panel, and live controls.",
+    src: "screenshots/operator-workspace.png",
+    alt: "StageFlo operator workspace with library, playlist, and preview panels.",
+  },
+  {
+    title: "Slide Editor",
+    body: "Layer styling, typography tuning, and visual overrides.",
+    src: "screenshots/slide-editor.png",
+    alt: "StageFlo slide editor showing text and layout styling controls.",
+  },
+  {
+    title: "Projector and Stage Output",
+    body: "Readable congregation output with confidence monitor support.",
+    src: "screenshots/projector-stage.png",
+    alt: "StageFlo projector and stage output displays during a live presentation.",
+  },
+];
+
 export default function Home() {
   return (
     <div className="site-shell">
@@ -91,21 +112,18 @@ export default function Home() {
         <section className="screenshots" id="screenshots">
           <div className="section-head">
             <h2>Inside StageFlo</h2>
-            <p>Drop real product screenshots in these slots as you capture your latest UI.</p>
+            <p>Real screenshots from StageFlo workflows used during live services.</p>
           </div>
           <div className="shot-grid">
-            <div className="shot reveal">
-              <h3>Operator Workspace</h3>
-              <p>Playlist planning, preview panel, and live controls.</p>
-            </div>
-            <div className="shot reveal">
-              <h3>Slide Editor</h3>
-              <p>Layer styling, typography tuning, and visual overrides.</p>
-            </div>
-            <div className="shot reveal">
-              <h3>Projector and Stage Output</h3>
-              <p>Readable congregation output with confidence monitor support.</p>
-            </div>
+            {screenshotCards.map((shot) => (
+              <figure key={shot.src} className="shot reveal">
+                <img src={shot.src} alt={shot.alt} loading="lazy" decoding="async" />
+                <figcaption>
+                  <h3>{shot.title}</h3>
+                  <p>{shot.body}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 
