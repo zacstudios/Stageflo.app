@@ -54,6 +54,12 @@ const screenshotCards = [
     src: "screenshots/projector-stage.png",
     alt: "StageFlo projector and stage output displays during a live presentation.",
   },
+  {
+    title: "Stage Display Focus",
+    body: "Live current and next-slide confidence view for speakers and musicians.",
+    src: "screenshots/stage-display.png",
+    alt: "StageFlo stage display view showing current and next slide panels.",
+  },
 ];
 
 export default function Home() {
