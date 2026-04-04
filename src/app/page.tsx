@@ -2,22 +2,51 @@ const RELEASE_BASE_URL = "https://github.com/zacstudios/Stageflo.app/releases/do
 const MAC_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0.dmg`;
 const WINDOWS_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0-setup.exe`;
 
-const featureCards = [
+const testimonials = [
   {
-    title: "Library to Live in Seconds",
-    body: "Search songs, browse scripture, queue media, then send to projector or stage without bouncing between screens.",
+    text: "StageFlo transformed our worship tech workflow. It's free, powerful, and just works.",
+    author: "Marcus W.",
+    role: "Worship Director",
   },
   {
-    title: "Advanced Slide Editing",
-    body: "Design rich lyric and scripture slides with layered text styling, spacing controls, and per-plan visual overrides.",
+    text: "The remote singer view is a game-changer. Our team feels more connected during every service.",
+    author: "Sarah K.",
+    role: "Tech Lead",
   },
   {
-    title: "Built for Multi-Output Teams",
-    body: "Control congregation output, stage confidence display, and lower-third overlays in one synchronized workflow.",
+    text: "No subscriptions, no lock-in, pure functionality. This is worship software the right way.",
+    author: "David L.",
+    role: "Church Tech Lead",
+  },
+];
+
+const featureGroups = [
+  {
+    title: "Content Creation",
+    features: [
+      { name: "Song Library Management", desc: "Search songs by title, artist, or lyrics instantly." },
+      { name: "Bible Integration", desc: "Look up passages and convert them to slides in one click." },
+      { name: "Custom Slides", desc: "Build announcements, prayers, and worship direction slides." },
+      { name: "Media Integration", desc: "Embed videos, images, and audio directly into presentations." },
+    ],
   },
   {
-    title: "Service-Safe Reliability",
-    body: "Desktop-first architecture with local data and fast rendering designed for live services where timing matters.",
+    title: "Live Control",
+    features: [
+      { name: "Hotkeys & Shortcuts", desc: "Control playback with keyboard shortcuts for your workflow." },
+      { name: "Remote Controller", desc: "Manage presentations from wireless devices during service." },
+      { name: "Multi-Output Sync", desc: "Control projector, stage display, and overlays simultaneously." },
+      { name: "Remote Singer View", desc: "Dedicated monitor for singers showing current and next slides." },
+    ],
+  },
+  {
+    title: "Output and Design",
+    features: [
+      { name: "Advanced Text Styling", desc: "Rich formatting with fonts, colors, shadows, and outlines." },
+      { name: "Lower-Third Overlays", desc: "Add song titles and speaker names to projector output." },
+      { name: "Stage Display", desc: "Confidence monitor with notes and timing for speakers." },
+      { name: "Template System", desc: "Design once, reuse across services with visual overrides." },
+    ],
   },
 ];
 
@@ -141,12 +170,66 @@ export default function Home() {
         </section>
 
         <section className="feature-grid" id="features">
-          {featureCards.map((feature) => (
-            <article key={feature.title} className="card reveal">
-              <h2>{feature.title}</h2>
-              <p>{feature.body}</p>
-            </article>
+          <div className="section-head" style={{ gridColumn: "1 / -1" }}>
+            <h2>Our Mission</h2>
+            <p>
+              Worship teams spend too much on presentation software. We built StageFlo to be free, open-source, and powerful.
+              No subscriptions, no lock-in, no limitations. Just worship tech that works for your team.
+            </p>
+          </div>
+        </section>
+
+        <section style={{ marginTop: "3rem" }}>
+          <div className="section-head">
+            <h2>Powerful Features Organized for Worship</h2>
+            <p>Everything you need to run a professional, multi-output worship service.</p>
+          </div>
+
+          {featureGroups.map((group) => (
+            <div key={group.title} style={{ marginTop: "2.3rem" }}>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem", color: "var(--ink)" }}>{group.title}</h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                  gap: "1rem",
+                }}
+              >
+                {group.features.map((feature) => (
+                  <article key={feature.name} className="card reveal">
+                    <h4 style={{ fontSize: "1rem", marginBottom: "0.4rem", fontWeight: 600 }}>{feature.name}</h4>
+                    <p>{feature.desc}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           ))}
+        </section>
+
+        <section style={{ marginTop: "3.5rem" }}>
+          <div className="section-head">
+            <h2>What Teams Are Saying</h2>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "1.3rem",
+            }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <article
+                key={`${testimonial.author}-${index}`}
+                className="card reveal"
+              >
+                <p style={{ fontStyle: "italic" }}>
+                  "{testimonial.text}"
+                </p>
+                <p style={{ marginTop: "0.9rem", marginBottom: 0, fontWeight: 600 }}>{testimonial.author}</p>
+                <p style={{ marginTop: "0.25rem" }}>{testimonial.role}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="screenshots" id="screenshots">
