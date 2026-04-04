@@ -126,7 +126,7 @@ export default function Home() {
           <div className="section-head">
             <h2>Desktop Downloads</h2>
             <p>
-              StageFlo desktop builds are published from the private main branch and copied to this site without exposing source code.
+              StageFlo desktop builds are published to the public release channel and mirrored here for direct downloads.
             </p>
           </div>
           <div className="install-grid">
@@ -208,7 +208,7 @@ export default function Home() {
             </a>
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/stageflo/discussions"
+              href="https://github.com/zacstudios/zacstudios.github.io/discussions"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -216,7 +216,7 @@ export default function Home() {
             </a>
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/stageflo/issues"
+              href="https://github.com/zacstudios/zacstudios.github.io/issues"
               target="_blank"
               rel="noopener noreferrer"
             >
