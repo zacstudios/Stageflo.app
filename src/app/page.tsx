@@ -19,21 +19,42 @@ const featureCards = [
 
 const installSteps = {
   macOS: [
-    "Download the latest DMG from GitHub Releases.",
+    "Open the StageFlo mac downloads page.",
     "Open the DMG and drag StageFlo to Applications.",
     "Launch StageFlo and configure outputs.",
   ],
   Windows: [
-    "Download the latest setup EXE from GitHub Releases.",
+    "Open the StageFlo Windows downloads page.",
     "Run the installer and follow prompts.",
     "Launch StageFlo from Start Menu.",
   ],
   Linux: [
-    "Download AppImage, DEB, or SNAP release assets.",
+    "Linux builds are not published on stageflo.app yet.",
     "Install using your preferred package flow.",
     "Launch StageFlo and set presentation displays.",
   ],
 };
+
+const downloadCards = [
+  {
+    title: "Download for macOS",
+    body: "Use the latest StageFlo DMG or ZIP hosted directly on stageflo.app. macOS auto-update files are published from the desktop app pipeline.",
+    href: "/downloads/mac/",
+    label: "Open Mac Downloads",
+  },
+  {
+    title: "Download for Windows",
+    body: "Use the latest StageFlo setup EXE hosted directly on stageflo.app. Windows installers are copied from the private main branch build pipeline.",
+    href: "/downloads/windows/",
+    label: "Open Windows Downloads",
+  },
+  {
+    title: "Updater Feed",
+    body: "StageFlo checks the update feed hosted at stageflo.app for packaged macOS builds. The feed lives under the stable /updates path.",
+    href: "/updates/",
+    label: "View Update Feed Info",
+  },
+];
 
 const screenshotCards = [
   {
@@ -89,20 +110,34 @@ export default function Home() {
           <div className="cta-row">
             <a
               className="button button-primary"
-              href="https://github.com/zacstudios/stageflo/releases/latest"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/downloads/mac/"
             >
-              Download Latest Release
+              Download for macOS
             </a>
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/stageflo"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/downloads/windows/"
             >
-              View Source
+              Download for Windows
             </a>
+          </div>
+        </section>
+
+        <section className="install" id="downloads">
+          <div className="section-head">
+            <h2>Desktop Downloads</h2>
+            <p>
+              StageFlo desktop builds are published from the private main branch and copied to this site without exposing source code.
+            </p>
+          </div>
+          <div className="install-grid">
+            {downloadCards.map((card) => (
+              <article className="install-card reveal" key={card.title}>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+                <a href={card.href}>{card.label}</a>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -136,7 +171,7 @@ export default function Home() {
         <section className="install" id="install">
           <div className="section-head">
             <h2>Install in Minutes</h2>
-            <p>Use the latest GitHub release assets for your platform.</p>
+            <p>Use the latest downloads hosted directly on stageflo.app for your platform.</p>
           </div>
           <div className="install-grid">
             {Object.entries(installSteps).map(([platform, steps]) => (
@@ -148,9 +183,13 @@ export default function Home() {
                   ))}
                 </ol>
                 <a
-                  href="https://github.com/zacstudios/stageflo/releases/latest"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={
+                    platform === "macOS"
+                      ? "/downloads/mac/"
+                      : platform === "Windows"
+                        ? "/downloads/windows/"
+                        : "https://github.com/zacstudios/stageflo/releases/latest"
+                  }
                 >
                   Open Downloads
                 </a>
@@ -166,11 +205,9 @@ export default function Home() {
           <div className="cta-row">
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/stageflo#readme"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/downloads/"
             >
-              Documentation
+              Downloads Hub
             </a>
             <a
               className="button button-secondary"

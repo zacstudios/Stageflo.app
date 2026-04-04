@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StageFlo for Windows</title>
+    <style>
+      :root {
+        --bg: #eef3f7;
+        --panel: rgba(255, 255, 255, 0.84);
+        --text: #18212a;
+        --muted: #5d6b78;
+        --accent: #1f5ca2;
+        --border: rgba(24, 33, 42, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(31, 92, 162, 0.18), transparent 32%),
+          linear-gradient(180deg, #f9fbfd 0%, var(--bg) 100%);
+      }
+      main {
+        width: min(780px, calc(100% - 32px));
+        margin: 64px auto;
+        padding: 32px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: 0 20px 60px rgba(24, 33, 42, 0.08);
+      }
+      h1 { margin: 0 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); }
+      p { margin: 0 0 16px; color: var(--muted); line-height: 1.6; }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700;
+      }
+      a:hover { text-decoration: underline; }
+      .card {
+        margin-top: 22px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.72);
+      }
+      code {
+        padding: 0.18rem 0.45rem;
+        border-radius: 999px;
+        background: rgba(31, 92, 162, 0.1);
+        color: var(--accent);
+        font-family: "SF Mono", Menlo, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>StageFlo for Windows</h1>
+      <p>
+        This page is the stable Windows download entry for StageFlo. The private desktop build pipeline publishes the latest Windows setup files here.
+      </p>
+      <div class="card">
+        <p>
+          After the first desktop publish run, Windows files will be available under
+          <code>/downloads/windows/</code> and the Windows updater metadata will be available at <code>/updates/latest.yml</code>.
+        </p>
+        <p>
+          If you do not see a setup EXE yet, the publish workflow has not completed successfully yet.
+        </p>
+      </div>
+      <div class="card">
+        <p><a href="/downloads/">Back to downloads hub</a></p>
+      </div>
+    </main>
+  </body>
+</html>
