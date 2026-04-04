@@ -26,6 +26,8 @@ const featureGroups = [
     features: [
       { name: "Song Library Management", desc: "Search songs by title, artist, or lyrics instantly." },
       { name: "Bible Integration", desc: "Look up passages and convert them to slides in one click." },
+      { name: "Multi-Lingual Support", desc: "Prepare and present content for multilingual churches in one service flow." },
+      { name: "XML Bible Format Support", desc: "Import XML Bible datasets used by church workflows and compatible libraries." },
       { name: "Custom Slides", desc: "Build announcements, prayers, and worship direction slides." },
       { name: "Media Integration", desc: "Embed videos, images, and audio directly into presentations." },
     ],
@@ -43,7 +45,7 @@ const featureGroups = [
     title: "Output and Design",
     features: [
       { name: "Advanced Text Styling", desc: "Rich formatting with fonts, colors, shadows, and outlines." },
-      { name: "Lower-Third Overlays", desc: "Add song titles and speaker names to projector output." },
+      { name: "OBS Lower Third Overlays", desc: "Send song titles and speaker names as lower thirds into OBS for streaming." },
       { name: "Stage Display", desc: "Confidence monitor with notes and timing for speakers." },
       { name: "Template System", desc: "Design once, reuse across services with visual overrides." },
     ],
@@ -111,6 +113,80 @@ const screenshotCards = [
   },
 ];
 
+const compareColumns = [
+  { name: "StageFlo", tone: "stageflo" },
+  { name: "ProPresenter", tone: "dark" },
+  { name: "EasyWorship", tone: "pink" },
+  { name: "VideoPsalm", tone: "dark" },
+  { name: "OpenLP", tone: "pink" },
+  { name: "ProClaim", tone: "dark" },
+] as const;
+
+const compareRows = [
+  { label: "Platforms", values: ["mac win linux", "mac win", "win", "win", "mac win linux", "mac win"] },
+  { label: "Price", values: ["Free", "$289/yr", "$180/yr", "Free", "Free", "$250/yr"] },
+  { label: "Multiple languages", values: ["Yes", "Yes", "No", "Yes", "Yes", "Yes"] },
+  { label: "XML Bible format", values: ["Yes", "Import tool", "Limited", "Yes", "Yes", "Limited"] },
+  { label: "Cloud sync", values: ["Yes", "Yes", "No", "Yes", "No", "Yes"] },
+  { label: "Customer support", values: ["Yes", "Yes", "Yes", "Yes", "Yes", "Yes"] },
+  { label: "Projects", values: ["Yes", "Yes", "Yes", "Yes", "Yes", "Yes"] },
+  { label: "Slides", values: ["Yes", "Yes", "Yes", "Yes", "Yes", "Yes"] },
+  { label: "Groups", values: ["Yes", "Yes", "No", "No", "Yes", "Yes"] },
+  { label: "Preview", values: ["Yes", "Yes", "Yes", "Yes", "Yes", "Yes"] },
+  { label: "Rich text editor", values: ["Yes", "Yes", "Yes", "Yes", "No", "Yes"] },
+  { label: "Live text edit", values: ["Yes", "Yes", "Yes", "Yes", "Yes", "Yes"] },
+  { label: "Auto labels", values: ["Yes", "Yes", "Yes", "Yes", "No", "No"] },
+  { label: "Chords", values: ["Yes", "Yes", "No", "Yes", "Yes", "No"] },
+  { label: "Themes", values: ["Yes", "No", "No", "Yes", "No", "No"] },
+  { label: "OBS lower-thirds", values: ["Yes", "Plugin/manual", "Manual", "Manual", "Manual", "Manual"] },
+];
+
+const getCompareTone = (value: string) => {
+  const normalized = value.trim().toLowerCase();
+  if (normalized === "yes" || normalized === "free") return "yes";
+  if (normalized === "no") return "no";
+  if (normalized === "plugin/manual" || normalized === "manual" || normalized === "partial") return "partial";
+  return "text";
+};
+
+const trustItems = [
+  {
+    title: "Open-source Project",
+    body: "Built in public with issues, roadmap, and release notes visible to everyone.",
+    href: "https://github.com/zacstudios/Stageflo.app",
+    label: "View Source",
+  },
+  {
+    title: "Community Driven",
+    body: "Requests and bugs are prioritized from real church and worship-team feedback.",
+    href: "/feedback/",
+    label: "Share Feedback",
+  },
+  {
+    title: "Production Ready",
+    body: "Desktop builds are published with update feeds for predictable deployment.",
+    href: "/updates/",
+    label: "Update Channel",
+  },
+];
+
+const languageBadges = [
+  "English",
+  "Spanish",
+  "French",
+  "Hindi",
+  "Tamil",
+  "Telugu",
+  "Malayalam",
+  "Kannada",
+  "Bengali",
+  "Marathi",
+  "Punjabi",
+  "Gujarati",
+  "Arabic",
+  "Portuguese",
+];
+
 export default function Home() {
   return (
     <div className="site-shell">
@@ -121,6 +197,10 @@ export default function Home() {
         </a>
         <nav>
           <a href="#features">Features</a>
+          <a href="#multilingual">Multilingual</a>
+          <a href="#overview">What is StageFlo</a>
+          <a href="#compare">Compare</a>
+          <a href="#reviews">Reviews</a>
           <a href="#screenshots">Screenshots</a>
           <a href="#install">Install</a>
           <a href="#community">Community</a>
@@ -179,6 +259,83 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="language-highlight" id="multilingual">
+          <div className="section-head">
+            <h2>Built for Multi-Lingual Churches</h2>
+            <p>
+              StageFlo helps teams run services in multiple languages and supports XML Bible formats used by many church workflows.
+            </p>
+          </div>
+          <div className="language-badges" aria-label="Common language support examples">
+            {languageBadges.map((language) => (
+              <span key={language} className="language-badge">{language}</span>
+            ))}
+          </div>
+          <p className="language-usecase">
+            Example: show English on projector, Hindi or Tamil for livestream captions, and native-language notes on stage display in the same service.
+          </p>
+          <div className="language-grid">
+            <article className="language-card reveal">
+              <h3>Multi-Language Service Flow</h3>
+              <p>
+                Prepare songs and scriptures for bilingual and multilingual congregations while keeping one clear live flow for operators.
+              </p>
+            </article>
+            <article className="language-card reveal">
+              <h3>XML Bible Format Compatibility</h3>
+              <p>
+                StageFlo supports XML Bible import paths used by church media teams and resources cataloged at Bible List.
+              </p>
+              <a href="https://biblelist.netlify.app" target="_blank" rel="noopener noreferrer">
+                Browse Bible XML Resources
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section className="overview" id="overview">
+          <div className="section-head">
+            <h2>What is StageFlo</h2>
+            <p>
+              StageFlo is an all-in-one presenter for songs, scripture, media, and synchronized outputs.
+              Start with the product walkthrough, then dive into docs for setup details.
+            </p>
+          </div>
+          <div className="overview-grid">
+            <a
+              className="video-card reveal"
+              href="https://github.com/zacstudios/Stageflo.app#readme"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="screenshots/operator-workspace.png"
+                alt="StageFlo overview thumbnail"
+                loading="lazy"
+                decoding="async"
+              />
+              <span>Open Product Walkthrough</span>
+            </a>
+            <article className="card reveal">
+              <h3 style={{ marginBottom: "0.6rem" }}>Quick Start Resources</h3>
+              <p>
+                Use docs, sample workflows, and support links to get your first service running fast.
+              </p>
+              <div className="cta-row" style={{ marginTop: "1rem" }}>
+                <a className="button button-secondary" href="https://github.com/zacstudios/Stageflo.app#readme" target="_blank" rel="noopener noreferrer">
+                  Documentation
+                </a>
+                <a className="button button-secondary" href="/downloads/">
+                  Downloads
+                </a>
+                <a className="button button-secondary" href="/feedback/">
+                  Support
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
         <section style={{ marginTop: "3rem" }}>
           <div className="section-head">
             <h2>Powerful Features Organized for Worship</h2>
@@ -211,6 +368,7 @@ export default function Home() {
             <h2>What Teams Are Saying</h2>
           </div>
           <div
+            id="reviews"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -227,6 +385,59 @@ export default function Home() {
                 </p>
                 <p style={{ marginTop: "0.9rem", marginBottom: 0, fontWeight: 600 }}>{testimonial.author}</p>
                 <p style={{ marginTop: "0.25rem" }}>{testimonial.role}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="comparison" id="compare">
+          <div className="section-head">
+            <h2>How StageFlo Compares</h2>
+            <p>
+              StageFlo is built to keep advanced live-service workflows accessible without subscriptions.
+            </p>
+          </div>
+          <div className="compare-wrap reveal" role="region" aria-label="StageFlo feature comparison">
+            <table className="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Capability</th>
+                  {compareColumns.map((column) => (
+                    <th scope="col" key={column.name}>
+                      <span className={`compare-vendor compare-vendor-${column.tone}`}>{column.name}</span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {compareRows.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row">{row.label}</th>
+                    {row.values.map((value, index) => (
+                      <td key={`${row.label}-${compareColumns[index].name}`}>
+                        <span className={`compare-pill compare-pill-${getCompareTone(value)}`}>{value}</span>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="compare-note">
+            Values are practical workflow summaries for typical worship environments and are updated as feature parity changes.
+          </p>
+        </section>
+
+        <section className="trust">
+          <div className="section-head">
+            <h2>What Others Look For Before Choosing</h2>
+          </div>
+          <div className="install-grid">
+            {trustItems.map((item) => (
+              <article key={item.title} className="install-card reveal">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+                <a href={item.href}>{item.label}</a>
               </article>
             ))}
           </div>
@@ -318,6 +529,13 @@ export default function Home() {
       <footer>
         <p>StageFlo</p>
         <small>Open-source worship presentation software for live services.</small>
+        <small>
+          <a href="/feedback/">Report Bug / Request Feature</a>
+          {" • "}
+          <a href="https://github.com/zacstudios/Stageflo.app" target="_blank" rel="noopener noreferrer">Source Code</a>
+          {" • "}
+          <a href="mailto:zac@stageflo.app">zac@stageflo.app</a>
+        </small>
       </footer>
     </div>
   );
