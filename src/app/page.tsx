@@ -207,7 +207,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main>
+      <main className="page-main">
         <section className="hero" id="home">
           <p className="eyebrow">Worship Presentation Software</p>
           <h1>Run Songs, Scripture, Media, and Multi-Screen Output from One Flow</h1>
@@ -231,7 +231,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="install" id="downloads">
+        <section className="install section-block" id="downloads">
           <div className="section-head">
             <h2>Desktop Downloads</h2>
             <p>
@@ -249,8 +249,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="feature-grid" id="features">
-          <div className="section-head" style={{ gridColumn: "1 / -1" }}>
+        <section className="mission section-block" id="features">
+          <div className="section-head">
             <h2>Our Mission</h2>
             <p>
               Worship teams spend too much on presentation software. We built StageFlo to be free, open-source, and powerful.
@@ -259,7 +259,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="language-highlight" id="multilingual">
+        <section className="language-highlight section-block" id="multilingual">
           <div className="section-head">
             <h2>Built for Multi-Lingual Churches</h2>
             <p>
@@ -293,7 +293,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="overview" id="overview">
+        <section className="overview section-block" id="overview">
           <div className="section-head">
             <h2>What is StageFlo</h2>
             <p>
@@ -317,11 +317,11 @@ export default function Home() {
               <span>Open Product Walkthrough</span>
             </a>
             <article className="card reveal">
-              <h3 style={{ marginBottom: "0.6rem" }}>Quick Start Resources</h3>
+              <h3 className="resource-title">Quick Start Resources</h3>
               <p>
                 Use docs, sample workflows, and support links to get your first service running fast.
               </p>
-              <div className="cta-row" style={{ marginTop: "1rem" }}>
+              <div className="cta-row resource-links">
                 <a className="button button-secondary" href="https://github.com/zacstudios/Stageflo.app#readme" target="_blank" rel="noopener noreferrer">
                   Documentation
                 </a>
@@ -336,25 +336,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section style={{ marginTop: "3rem" }}>
+        <section className="feature-showcase section-block">
           <div className="section-head">
             <h2>Powerful Features Organized for Worship</h2>
             <p>Everything you need to run a professional, multi-output worship service.</p>
           </div>
 
           {featureGroups.map((group) => (
-            <div key={group.title} style={{ marginTop: "2.3rem" }}>
-              <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem", color: "var(--ink)" }}>{group.title}</h3>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                  gap: "1rem",
-                }}
-              >
+            <div key={group.title} className="feature-group">
+              <h3 className="feature-group-title">{group.title}</h3>
+              <div className="feature-cards">
                 {group.features.map((feature) => (
                   <article key={feature.name} className="card reveal">
-                    <h4 style={{ fontSize: "1rem", marginBottom: "0.4rem", fontWeight: 600 }}>{feature.name}</h4>
+                    <h4 className="feature-name">{feature.name}</h4>
                     <p>{feature.desc}</p>
                   </article>
                 ))}
@@ -363,28 +357,21 @@ export default function Home() {
           ))}
         </section>
 
-        <section style={{ marginTop: "3.5rem" }}>
+        <section className="testimonials section-block">
           <div className="section-head">
             <h2>What Teams Are Saying</h2>
           </div>
-          <div
-            id="reviews"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "1.3rem",
-            }}
-          >
+          <div id="reviews" className="testimonial-grid">
             {testimonials.map((testimonial, index) => (
               <article
                 key={`${testimonial.author}-${index}`}
                 className="card reveal"
               >
-                <p style={{ fontStyle: "italic" }}>
+                <p className="testimonial-quote">
                   "{testimonial.text}"
                 </p>
-                <p style={{ marginTop: "0.9rem", marginBottom: 0, fontWeight: 600 }}>{testimonial.author}</p>
-                <p style={{ marginTop: "0.25rem" }}>{testimonial.role}</p>
+                <p className="testimonial-author">{testimonial.author}</p>
+                <p className="testimonial-role">{testimonial.role}</p>
               </article>
             ))}
           </div>
@@ -443,7 +430,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="screenshots" id="screenshots">
+        <section className="screenshots section-block" id="screenshots">
           <div className="section-head">
             <h2>Inside StageFlo</h2>
             <p>Real screenshots from StageFlo workflows used during live services.</p>
@@ -461,7 +448,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="install" id="install">
+        <section className="install section-block" id="install">
           <div className="section-head">
             <h2>Install in Minutes</h2>
             <p>Use the latest downloads hosted directly on stageflo.app for your platform.</p>
@@ -489,7 +476,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="community" id="community">
+        <section className="community section-block" id="community">
           <div className="section-head">
             <h2>Docs and Community</h2>
           </div>

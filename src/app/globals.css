@@ -43,6 +43,15 @@ a {
   padding: 1.2rem 1rem 4.5rem;
 }
 
+.page-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-block + .section-block {
+  margin-top: 3.25rem;
+}
+
 .top-nav {
   position: sticky;
   top: 0.7rem;
@@ -184,14 +193,15 @@ a {
 
 .screenshots,
 .install,
-.community {
-  margin-top: 3.25rem;
-}
-
+.community,
 .comparison,
 .trust,
-.overview {
-  margin-top: 3.25rem;
+.overview,
+.language-highlight,
+.feature-showcase,
+.testimonials,
+.mission {
+  margin-top: 0;
 }
 
 .language-highlight {
@@ -414,6 +424,7 @@ a {
 
 .section-head {
   margin-bottom: 1rem;
+  max-width: 74ch;
 }
 
 .section-head h2 {
@@ -423,6 +434,56 @@ a {
 .section-head p {
   color: var(--muted);
   margin-top: 0.45rem;
+}
+
+.resource-title {
+  margin-bottom: 0.6rem;
+}
+
+.resource-links {
+  margin-top: 1rem;
+}
+
+.feature-group + .feature-group {
+  margin-top: 2.3rem;
+}
+
+.feature-group-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.feature-name {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.3rem;
+}
+
+.testimonial-quote {
+  font-style: italic;
+}
+
+.testimonial-author {
+  margin-top: 0.9rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.testimonial-role {
+  margin-top: 0.25rem;
 }
 
 .shot-grid {
