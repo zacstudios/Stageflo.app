@@ -1,4 +1,4 @@
-const RELEASE_BASE_URL = "https://github.com/zacstudios/zacstudios.github.io/releases/download/v1.0.0-desktop";
+const RELEASE_BASE_URL = "https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop";
 const MAC_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0.dmg`;
 const WINDOWS_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0-setup.exe`;
 
@@ -208,7 +208,7 @@ export default function Home() {
             </a>
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/zacstudios.github.io"
+              href="https://github.com/zacstudios/Stageflo.app"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -216,7 +216,7 @@ export default function Home() {
             </a>
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/zacstudios.github.io/issues"
+              href="https://github.com/zacstudios/Stageflo.app/issues"
               target="_blank"
               rel="noopener noreferrer"
             >
