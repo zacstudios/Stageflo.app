@@ -208,11 +208,11 @@ export default function Home() {
             </a>
             <a
               className="button button-secondary"
-              href="https://github.com/zacstudios/zacstudios.github.io/discussions"
+              href="https://github.com/zacstudios/zacstudios.github.io"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Discussions
+              GitHub Repository
             </a>
             <a
               className="button button-secondary"
