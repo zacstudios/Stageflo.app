@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StageFlo Downloads</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f0e6;
+        --panel: rgba(255, 255, 255, 0.84);
+        --text: #241f18;
+        --muted: #6f675b;
+        --accent: #975d14;
+        --border: rgba(36, 31, 24, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top right, rgba(151, 93, 20, 0.16), transparent 30%),
+          linear-gradient(180deg, #fbf8f0 0%, var(--bg) 100%);
+        color: var(--text);
+      }
+
+      main {
+        width: min(760px, calc(100% - 32px));
+        margin: 64px auto;
+        padding: 32px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--panel);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 20px 60px rgba(36, 31, 24, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        line-height: 1;
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .card {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>StageFlo Downloads</h1>
+      <p>
+        This path hosts manual installers for StageFlo, including the macOS DMG published by the release workflow.
+      </p>
+      <div class="card">
+        <p>
+          Auto-update metadata lives at <a href="/updates/">/updates/</a>.
+        </p>
+        <p>
+          Once the first release is published, download files will appear here under stable versioned names.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

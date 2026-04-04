@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StageFlo Updates</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f4ee;
+        --panel: rgba(255, 255, 255, 0.82);
+        --text: #1f2520;
+        --muted: #5f685e;
+        --accent: #1f6a52;
+        --border: rgba(31, 37, 32, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(31, 106, 82, 0.16), transparent 32%),
+          linear-gradient(180deg, #fcfaf5 0%, var(--bg) 100%);
+        color: var(--text);
+      }
+
+      main {
+        width: min(760px, calc(100% - 32px));
+        margin: 64px auto;
+        padding: 32px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--panel);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 20px 60px rgba(31, 37, 32, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        line-height: 1;
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      code {
+        display: inline-block;
+        padding: 0.2rem 0.45rem;
+        border-radius: 999px;
+        background: rgba(31, 106, 82, 0.1);
+        color: var(--accent);
+        font-family: "SF Mono", "Menlo", monospace;
+        font-size: 0.95rem;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .card {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>StageFlo Updates</h1>
+      <p>
+        This path hosts the macOS auto-update feed for StageFlo. The Electron app checks this location for files such as
+        <code>latest-mac.yml</code> and the matching signed ZIP package.
+      </p>
+      <div class="card">
+        <p>
+          If you are looking for a manual installer, go to
+          <a href="/downloads/">/downloads/</a>.
+        </p>
+        <p>
+          If no release has been published yet, the update feed files will not appear here until the first mac release workflow completes.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
