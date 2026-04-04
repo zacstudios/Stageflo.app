@@ -208,6 +208,12 @@ export default function Home() {
             </a>
             <a
               className="button button-secondary"
+              href="/feedback/"
+            >
+              Feedback & Bugs
+            </a>
+            <a
+              className="button button-secondary"
               href="https://github.com/zacstudios/Stageflo.app"
               target="_blank"
               rel="noopener noreferrer"
