@@ -7,6 +7,7 @@ const SONGS_XML_ML_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-ml.xml`;
 const SONGS_XML_TA_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-ta.xml`;
 const SONGS_XML_HI_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-hi.xml`;
 const BIBLE_XML_RESOURCES_URL = "https://biblelist.netlify.app";
+const MALAYALAM_BIBLE_XML_URL = "https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/MalayalamBible.xml";
 
 const testimonials = [
   {
@@ -95,6 +96,12 @@ const downloadCards = [
     body: "OpenLyrics XML package for Hindi-primary songs with translation lines retained where available.",
     href: SONGS_XML_HI_URL,
     label: "Download Hindi XML",
+  },
+  {
+    title: "Malayalam Bible XML",
+    body: "Direct Malayalam Bible XML source file compatible with StageFlo import workflows.",
+    href: MALAYALAM_BIBLE_XML_URL,
+    label: "Download Malayalam Bible XML",
   },
 ];
 
