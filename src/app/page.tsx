@@ -6,6 +6,7 @@ const WINDOWS_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0-setup.exe`;
 const SONGS_XML_ML_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-ml.xml`;
 const SONGS_XML_TA_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-ta.xml`;
 const SONGS_XML_HI_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-hi.xml`;
+const BIBLE_XML_RESOURCES_URL = "https://biblelist.netlify.app";
 
 const testimonials = [
   {
@@ -84,10 +85,10 @@ const downloadCards = [
     label: "Download Windows EXE",
   },
   {
-    title: "Updater Feed",
-    body: "StageFlo checks the update feed hosted at stageflo.app for packaged macOS builds. The feed lives under the stable /updates path.",
-    href: "/updates/",
-    label: "View Update Feed Info",
+    title: "XML Bible Format Compatibility",
+    body: "Find compatible Bible XML resources and datasets you can import into StageFlo for scripture workflows.",
+    href: BIBLE_XML_RESOURCES_URL,
+    label: "Browse Bible XML Resources",
   },
   {
     title: "Songs XML (Malayalam Primary)",
