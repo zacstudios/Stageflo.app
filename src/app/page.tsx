@@ -73,18 +73,6 @@ const installSteps = {
 
 const downloadCards = [
   {
-    title: "Download for macOS",
-    body: "Use the latest StageFlo universal DMG hosted directly on stageflo.app. macOS auto-update files are published from the desktop app pipeline.",
-    href: MAC_DOWNLOAD_URL,
-    label: "Download Mac DMG",
-  },
-  {
-    title: "Download for Windows",
-    body: "Use the latest StageFlo setup EXE hosted directly on stageflo.app. Windows installers are copied from the private main branch build pipeline.",
-    href: WINDOWS_DOWNLOAD_URL,
-    label: "Download Windows EXE",
-  },
-  {
     title: "XML Bible Format Compatibility",
     body: "Find compatible Bible XML resources and datasets you can import into StageFlo for scripture workflows.",
     href: BIBLE_XML_RESOURCES_URL,
@@ -254,9 +242,9 @@ export default function Home() {
 
         <section className="install section-block" id="downloads">
           <div className="section-head">
-            <h2>Desktop Downloads</h2>
+            <h2>Resource Downloads</h2>
             <p>
-              StageFlo desktop builds are published to the public release channel and mirrored here for direct downloads.
+              Download import-ready XML resources for StageFlo workflows.
             </p>
           </div>
           <div className="install-grid">
