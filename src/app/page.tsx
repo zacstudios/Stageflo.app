@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 const RELEASE_BASE_URL = "https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop";
 const MAC_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0.dmg`;
 const WINDOWS_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0-setup.exe`;
+const SONGS_XML_ALL_URL = `${RELEASE_BASE_URL}/stageflo-songs-openlyrics.xml.zip`;
 
 const testimonials = [
   {
@@ -38,7 +41,7 @@ const featureGroups = [
       { name: "Hotkeys & Shortcuts", desc: "Control playback with keyboard shortcuts for your workflow." },
       { name: "Remote Controller", desc: "Manage presentations from wireless devices during service." },
       { name: "Multi-Output Sync", desc: "Control projector, stage display, and overlays simultaneously." },
-      { name: "Remote Singer View", desc: "Dedicated monitor for singers showing current and next slides." },
+      { name: "Remote Singer View", desc: "Mobile-friendly stage view for singers with current and next lyrics on phones or tablets." },
     ],
   },
   {
@@ -83,6 +86,18 @@ const downloadCards = [
     body: "StageFlo checks the update feed hosted at stageflo.app for packaged macOS builds. The feed lives under the stable /updates path.",
     href: "/updates/",
     label: "View Update Feed Info",
+  },
+  {
+    title: "Songs XML (All Languages)",
+    body: "OpenLyrics XML package for app import. Includes all available song language lines in one download.",
+    href: SONGS_XML_ALL_URL,
+    label: "Download OpenLyrics XML",
+  },
+  {
+    title: "Songs XML (Primary Language Packs)",
+    body: "Primary-language OpenLyrics packs for Malayalam, Tamil, and Hindi workflows with English translation lines retained.",
+    href: "/downloads/",
+    label: "Choose Language Packs",
   },
 ];
 
@@ -197,10 +212,7 @@ export default function Home() {
         </a>
         <nav>
           <a href="#features">Features</a>
-          <a href="#multilingual">Multilingual</a>
-          <a href="#overview">What is StageFlo</a>
-          <a href="#compare">Compare</a>
-          <a href="#reviews">Reviews</a>
+          <Link href="/docs/introduction/">Docs</Link>
           <a href="#screenshots">Screenshots</a>
           <a href="#install">Install</a>
           <a href="#community">Community</a>
@@ -213,7 +225,7 @@ export default function Home() {
           <h1>Run Songs, Scripture, Media, and Multi-Screen Output from One Flow</h1>
           <p className="lead">
             StageFlo helps worship teams prepare and present with confidence across operator,
-            projector, stage, and lower-third displays.
+            projector, stage, and lower-third displays, including a mobile remote singer view for on-stage teams.
           </p>
           <div className="cta-row">
             <a
@@ -487,6 +499,12 @@ export default function Home() {
             >
               Downloads Hub
             </a>
+            <Link
+              className="button button-secondary"
+              href="/docs/introduction/"
+            >
+              Docs Introduction
+            </Link>
             <a
               className="button button-secondary"
               href="/feedback/"
