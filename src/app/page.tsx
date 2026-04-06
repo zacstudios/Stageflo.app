@@ -137,25 +137,25 @@ const screenshotCards = [
   {
     title: "Operator Workspace",
     body: "Playlist planning, preview panel, and live controls.",
-    src: "screenshots/operator-workspace.png",
+    src: "/screenshots/operator-workspace.png",
     alt: "StageFlo operator workspace with library, playlist, and preview panels.",
   },
   {
     title: "Slide Editor",
     body: "Layer styling, typography tuning, and visual overrides.",
-    src: "screenshots/slide-editor.png",
+    src: "/screenshots/slide-editor.png",
     alt: "StageFlo slide editor showing text and layout styling controls.",
   },
   {
     title: "Projector and Stage Output",
     body: "Readable congregation output with confidence monitor support.",
-    src: "screenshots/projector-stage.png",
+    src: "/screenshots/projector-stage.png",
     alt: "StageFlo projector and stage output displays during a live presentation.",
   },
   {
     title: "Stage Display Focus",
     body: "Live current and next-slide confidence view for speakers and musicians.",
-    src: "screenshots/stage-display.png",
+    src: "/screenshots/stage-display.png",
     alt: "StageFlo stage display view showing current and next slide panels.",
   },
 ];
@@ -239,7 +239,7 @@ export default function Home() {
     <div className="site-shell">
       <header className="top-nav">
         <a className="brand" href="#home" aria-label="StageFlo home">
-          <img src="stageflo-icon.png" alt="StageFlo" width={30} height={30} />
+          <img src="/stageflo-icon.png" alt="StageFlo" width={28} height={28} style={{ borderRadius: '0.55rem', background: 'rgba(124, 58, 237, 0.35)', boxShadow: '0 0 0 1.5px rgba(196, 181, 253, 0.5), 0 2px 10px rgba(124, 58, 237, 0.4)' }} />
           <span>StageFlo</span>
         </a>
         <nav>
@@ -353,7 +353,7 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               <img
-                src="screenshots/operator-workspace.png"
+                src="/screenshots/operator-workspace.png"
                 alt="StageFlo overview thumbnail"
                 loading="lazy"
                 decoding="async"

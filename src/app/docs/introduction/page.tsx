@@ -24,7 +24,7 @@ export default function DocsIntroductionPage() {
     <div className="site-shell">
       <header className="top-nav">
         <Link className="brand" href="/" aria-label="StageFlo home">
-          <img src="/stageflo-icon.png" alt="StageFlo" width={30} height={30} />
+          <img src="/stageflo-icon.png" alt="StageFlo" width={28} height={28} style={{ borderRadius: '0.55rem', background: 'rgba(124, 58, 237, 0.35)', boxShadow: '0 0 0 1.5px rgba(196, 181, 253, 0.5), 0 2px 10px rgba(124, 58, 237, 0.4)' }} />
           <span>StageFlo Docs</span>
         </Link>
         <nav>

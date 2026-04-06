@@ -8,11 +8,11 @@
   position: sticky;
   top: 5.8rem;
   align-self: start;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(124, 58, 237, 0.2);
   border-radius: 1rem;
-  background: var(--panel);
+  background: rgba(18, 26, 47, 0.82);
   backdrop-filter: blur(14px);
-  box-shadow: 0 18px 30px rgba(17, 19, 23, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(196, 181, 253, 0.05);
   padding: 1rem;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .sidebar a:hover {
-  color: var(--ink);
-  background: rgba(10, 132, 255, 0.08);
+  color: var(--accent-light);
+  background: rgba(124, 58, 237, 0.12);
 }
 
 .content {
@@ -47,11 +47,11 @@
 
 .docHero,
 .docCard {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(124, 58, 237, 0.18);
   border-radius: 1rem;
-  background: var(--panel);
+  background: rgba(18, 26, 47, 0.72);
   backdrop-filter: blur(14px);
-  box-shadow: 0 18px 30px rgba(17, 19, 23, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(196, 181, 253, 0.05);
   padding: 1.25rem;
 }
 
@@ -89,9 +89,10 @@
 .callout {
   margin-top: 0.75rem;
   border-left: 3px solid var(--accent);
-  background: rgba(10, 132, 255, 0.08);
-  border-radius: 0.55rem;
+  background: rgba(124, 58, 237, 0.1);
+  border-radius: 0 0.55rem 0.55rem 0;
   padding: 0.75rem 0.85rem;
+  color: #cbd5e1;
 }
 
 .quickGrid {
@@ -102,9 +103,9 @@
 }
 
 .quickCard {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(124, 58, 237, 0.18);
   border-radius: 0.85rem;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(13, 17, 32, 0.6);
   padding: 0.8rem;
 }
 
@@ -133,9 +134,16 @@
   min-height: 2.35rem;
   padding: 0 0.9rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(124, 58, 237, 0.28);
+  background: rgba(18, 26, 47, 0.8);
+  color: #cbd5e1;
   font-weight: 600;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.ghostLink:hover {
+  border-color: rgba(196, 181, 253, 0.4);
+  color: var(--accent-light);
 }
 
 @media (max-width: 980px) {
