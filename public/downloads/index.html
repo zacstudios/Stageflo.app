@@ -6,33 +6,20 @@
     <title>StageFlo Downloads</title>
     <meta
       name="description"
-      content="Download StageFlo desktop installers and import-ready XML resources for worship presentation workflows."
+      content="Dynamic StageFlo downloads and update status for Windows and macOS releases."
     />
     <link rel="canonical" href="https://stageflo.app/downloads/" />
-    <meta property="og:title" content="StageFlo Downloads" />
-    <meta
-      property="og:description"
-      content="Download StageFlo desktop installers and import-ready XML resources for worship presentation workflows."
-    />
-    <meta property="og:url" content="https://stageflo.app/downloads/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://stageflo.app/stageflo-icon.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="StageFlo Downloads" />
-    <meta
-      name="twitter:description"
-      content="Download StageFlo desktop installers and import-ready XML resources for worship presentation workflows."
-    />
-    <meta name="twitter:image" content="https://stageflo.app/stageflo-icon.png" />
     <style>
       :root {
         color-scheme: light;
-        --bg: #f4f0e6;
-        --panel: rgba(255, 255, 255, 0.84);
-        --text: #241f18;
-        --muted: #6f675b;
-        --accent: #975d14;
-        --border: rgba(36, 31, 24, 0.12);
+        --bg: #f4efe6;
+        --panel: rgba(255, 252, 245, 0.84);
+        --text: #1f2520;
+        --muted: #5f685e;
+        --accent: #1f6a52;
+        --accent-soft: rgba(31, 106, 82, 0.12);
+        --border: rgba(31, 37, 32, 0.12);
+        --danger: #9a3412;
       }
 
       * {
@@ -44,32 +31,33 @@
         min-height: 100vh;
         font-family: "Avenir Next", "Segoe UI", sans-serif;
         background:
-          radial-gradient(circle at top right, rgba(151, 93, 20, 0.16), transparent 30%),
-          linear-gradient(180deg, #fbf8f0 0%, var(--bg) 100%);
+          radial-gradient(circle at top left, rgba(31, 106, 82, 0.16), transparent 32%),
+          radial-gradient(circle at bottom right, rgba(191, 90, 36, 0.12), transparent 28%),
+          linear-gradient(180deg, #fcfaf5 0%, var(--bg) 100%);
         color: var(--text);
       }
 
       main {
-        width: min(760px, calc(100% - 32px));
-        margin: 64px auto;
+        width: min(980px, calc(100% - 32px));
+        margin: 56px auto;
         padding: 32px;
         border: 1px solid var(--border);
         border-radius: 24px;
         background: var(--panel);
         backdrop-filter: blur(14px);
-        box-shadow: 0 20px 60px rgba(36, 31, 24, 0.08);
+        box-shadow: 0 20px 60px rgba(31, 37, 32, 0.08);
       }
 
       h1 {
-        margin: 0 0 12px;
-        font-size: clamp(2rem, 5vw, 3.25rem);
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
         line-height: 1;
       }
 
       p {
-        margin: 0 0 16px;
+        margin: 0 0 14px;
         color: var(--muted);
-        font-size: 1.05rem;
+        font-size: 1.02rem;
         line-height: 1.6;
       }
 
@@ -83,63 +71,178 @@
         text-decoration: underline;
       }
 
+      .eyebrow {
+        margin-bottom: 8px;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
       .card {
-        margin-top: 24px;
+        margin-top: 20px;
         padding: 18px 20px;
         border-radius: 18px;
         border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .button.secondary {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .small {
+        font-size: 0.94rem;
+        color: var(--muted);
+      }
+
+      .status-ok {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .status-warn {
+        color: #8a5a00;
+        font-weight: 700;
+      }
+
+      .status-error {
+        color: var(--danger);
+        font-weight: 700;
       }
     </style>
   </head>
   <body>
     <main>
-      <h1>StageFlo Downloads</h1>
+      <div class="eyebrow">StageFlo Releases</div>
+      <h1>Downloads</h1>
       <p>
-        This path hosts manual installers for StageFlo, including the macOS universal DMG and the Windows setup installer.
+        This is the single public release page for manual downloads. It reads the live updater manifests so links and versions stay current.
       </p>
-      <div class="card">
-        <p>
-          <a href="https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop/stageflo-1.0.0.dmg">Download macOS Universal DMG (Intel + Apple Silicon)</a>
-        </p>
-        <p>
-          <a href="https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop/stageflo-1.0.0-setup.exe">Download Windows Setup EXE</a>
-        </p>
+
+      <div class="card grid">
+        <section>
+          <h3>Windows</h3>
+          <p id="win-summary" class="small">Checking latest Windows release…</p>
+          <a id="win-link" class="button" href="/updates/latest.yml">View Manifest</a>
+        </section>
+        <section>
+          <h3>macOS</h3>
+          <p id="mac-summary" class="small">Checking latest macOS release…</p>
+          <a id="mac-link" class="button secondary" href="/updates/latest-mac.yml">View Manifest</a>
+        </section>
       </div>
+
       <div class="card">
-        <p>
-          <a href="https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/MalayalamBible.xml">Download Malayalam Bible XML</a>
-        </p>
-        <p>
-          <a href="https://sourceforge.net/projects/zefania-sharp/files/Bibles/ENG/King%20James/King%20James%20Version/SF_2009-01-23_ENG_KJV_%28KING%20JAMES%20VERSION%29.zip/download">Download English KJV Bible (Zefania XML ZIP)</a>
-        </p>
-        <p>
-          <a href="https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/EnglishNIVBible.xml">Download English NIV Bible XML</a>
-        </p>
-        <p>
-          <a href="https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/EnglishESVBible.xml">Download English ESV Bible XML</a>
-        </p>
-        <p>
-          <a href="https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop/songs-openlyrics-primary-ml.xml">Download Songs OpenLyrics XML (Malayalam)</a>
-        </p>
-        <p>
-          <a href="https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop/songs-openlyrics-primary-ta.xml">Download Songs OpenLyrics XML (Tamil)</a>
-        </p>
-        <p>
-          <a href="https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop/songs-openlyrics-primary-hi.xml">Download Songs OpenLyrics XML (Hindi)</a>
-        </p>
-        <p>
-          <a href="https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop/songs-openlyrics-All.Songs.xml">Download Songs OpenLyrics XML (All Songs)</a>
-        </p>
+        <p id="status" class="status-ok">Loading release metadata…</p>
+        <a class="button secondary" href="/updates/latest.yml">Windows latest.yml</a>
+        <a class="button secondary" href="/updates/latest-mac.yml">macOS latest-mac.yml</a>
       </div>
+
       <div class="card">
-        <p>
-          Auto-update metadata lives at <a href="/updates/">/updates/</a>.
-        </p>
-        <p>
-          Once the first release is published, download files will appear here under stable versioned names.
-        </p>
+        <h3>Import Resources</h3>
+        <p><a href="https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/MalayalamBible.xml">Download Malayalam Bible XML</a></p>
+        <p><a href="https://sourceforge.net/projects/zefania-sharp/files/Bibles/ENG/King%20James/King%20James%20Version/SF_2009-01-23_ENG_KJV_%28KING%20JAMES%20VERSION%29.zip/download">Download English KJV Bible (Zefania XML ZIP)</a></p>
+        <p><a href="https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/EnglishNIVBible.xml">Download English NIV Bible XML</a></p>
+        <p><a href="https://raw.githubusercontent.com/Beblia/Holy-Bible-XML-Format/master/EnglishESVBible.xml">Download English ESV Bible XML</a></p>
+      </div>
+
+      <div class="card">
+        <p class="small">Legacy <a href="/updates/">/updates/</a> remains available and redirects here for users.</p>
       </div>
     </main>
+
+    <script>
+      function parseManifest(text) {
+        return {
+          version: text.match(/^version:\s*(.+)$/m)?.[1]?.trim(),
+          url: text.match(/^\s*- url:\s*(.+)$/m)?.[1]?.trim(),
+          size: Number(text.match(/^\s*size:\s*(\d+)$/m)?.[1] || 0),
+          releaseDate: text.match(/^releaseDate:\s*'(.+)'$/m)?.[1]?.trim()
+        }
+      }
+
+      function formatBytes(bytes) {
+        if (!Number.isFinite(bytes) || bytes <= 0) return 'Unknown size'
+        const units = ['B', 'KB', 'MB', 'GB']
+        let size = bytes
+        let i = 0
+        while (size >= 1024 && i < units.length - 1) {
+          size /= 1024
+          i += 1
+        }
+        return `${size.toFixed(i === 0 ? 0 : 1)} ${units[i]}`
+      }
+
+      async function load(platform) {
+        const file = platform === 'mac' ? '/updates/latest-mac.yml' : '/updates/latest.yml'
+        const summary = document.getElementById(`${platform}-summary`)
+        const link = document.getElementById(`${platform}-link`)
+
+        try {
+          const res = await fetch(file, { cache: 'no-store' })
+          if (!res.ok) throw new Error(`HTTP ${res.status}`)
+          const manifest = parseManifest(await res.text())
+
+          const dateText = manifest.releaseDate ? new Date(manifest.releaseDate).toLocaleString() : 'date unknown'
+          summary.textContent = `v${manifest.version || 'unknown'} • ${formatBytes(manifest.size)} • ${dateText}`
+
+          if (manifest.url) {
+            link.href = manifest.url
+            link.textContent = platform === 'mac' ? 'Download Latest macOS Build' : 'Download Latest Windows Build'
+          }
+
+          return true
+        } catch (e) {
+          summary.textContent = platform === 'mac'
+            ? 'No macOS release manifest available yet.'
+            : 'Windows release info unavailable right now.'
+          link.href = file
+          link.textContent = 'View Manifest'
+          return false
+        }
+      }
+
+      async function init() {
+        const winOk = await load('win')
+        const macOk = await load('mac')
+        const status = document.getElementById('status')
+
+        if (winOk && macOk) {
+          status.textContent = 'Windows and macOS release metadata loaded successfully.'
+          status.className = 'status-ok'
+        } else if (winOk) {
+          status.textContent = 'Windows release metadata loaded. macOS manifest is not published yet.'
+          status.className = 'status-warn'
+        } else {
+          status.textContent = 'Release metadata could not be loaded. Check manifest links below.'
+          status.className = 'status-error'
+        }
+      }
+
+      init()
+    </script>
   </body>
 </html>
