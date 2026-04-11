@@ -1,0 +1,8 @@
+version: 1.5.0
+files:
+  - url: https://github.com/zacstudios/stageflo.github.io/releases/download/updates-v1.5.0/stageflo-1.5.0-setup.exe
+    sha512: RTYbU2cabKeMGZIA8qNwLRkJfazHpRDJn1L2k4/1/oplMdc7BA8/tPvNmX2H6E8wrszDrsE+ViY41FgmP4CeNQ==
+    size: 125342671
+path: https://github.com/zacstudios/stageflo.github.io/releases/download/updates-v1.5.0/stageflo-1.5.0-setup.exe
+sha512: RTYbU2cabKeMGZIA8qNwLRkJfazHpRDJn1L2k4/1/oplMdc7BA8/tPvNmX2H6E8wrszDrsE+ViY41FgmP4CeNQ==
+releaseDate: '2026-04-11T12:32:46.004Z'
