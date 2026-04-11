@@ -345,7 +345,7 @@ export default async function Home() {
 
       <main className="page-main">
         <section className="hero" id="home">
-          <p className="eyebrow">Worship Presentation Software</p>
+          <p className="eyebrow">Worship Presentation Software for Multilingual Churches</p>
           <h1>Run Songs, Scripture, Media, and Multi-Screen Output from One Flow</h1>
           <p className="lead">
             StageFlo helps worship teams prepare and present with confidence across operator,
