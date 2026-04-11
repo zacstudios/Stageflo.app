@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
+const CURRENT_VERSION = "1.5.0";
 const RELEASE_BASE_URL = "https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop";
-const MAC_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0.dmg`;
-const WINDOWS_DOWNLOAD_URL = `${RELEASE_BASE_URL}/stageflo-1.0.0-setup.exe`;
+const MAC_DOWNLOAD_URL = `https://github.com/zacstudios/stageflo.github.io/releases/download/v${CURRENT_VERSION}/stageflo-${CURRENT_VERSION}.dmg`;
+const WINDOWS_DOWNLOAD_URL = `https://github.com/zacstudios/stageflo.github.io/releases/download/updates-v${CURRENT_VERSION}/stageflo-${CURRENT_VERSION}-setup.exe`;
 const SONGS_XML_ML_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-ml.xml`;
 const SONGS_XML_TA_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-ta.xml`;
 const SONGS_XML_HI_URL = `${RELEASE_BASE_URL}/songs-openlyrics-primary-hi.xml`;
@@ -235,6 +238,29 @@ const languageBadges = [
   "Portuguese",
 ];
 
+type LatestReleaseInfo = {
+  version: string;
+  url: string;
+};
+
+const parseManifest = (manifestText: string): LatestReleaseInfo | null => {
+  const version = manifestText.match(/^version:\s*(.+)$/m)?.[1]?.trim();
+  const url = manifestText.match(/^\s*- url:\s*(.+)$/m)?.[1]?.trim();
+
+  if (!version || !url) return null;
+  return { version, url };
+};
+
+const readLatestReleaseManifest = async (fileName: string): Promise<LatestReleaseInfo | null> => {
+  try {
+    const manifestPath = path.join(process.cwd(), "public", "updates", fileName);
+    const manifestText = await readFile(manifestPath, "utf8");
+    return parseManifest(manifestText);
+  } catch {
+    return null;
+  }
+};
+
 export const metadata: Metadata = {
   title: "StageFlo | Worship Presentation Software",
   description:
@@ -257,24 +283,38 @@ export const metadata: Metadata = {
   },
 };
 
-const softwareAppStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "StageFlo",
-  applicationCategory: "MultimediaApplication",
-  operatingSystem: "macOS, Windows, Linux",
-  description:
-    "Open-source worship presentation software for songs, scripture, media, overlays, and multi-screen outputs.",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  url: "https://stageflo.app/",
-  downloadUrl: [MAC_DOWNLOAD_URL, WINDOWS_DOWNLOAD_URL],
-};
+export default async function Home() {
+  const [macManifest, windowsManifest] = await Promise.all([
+    readLatestReleaseManifest("latest-mac.yml"),
+    readLatestReleaseManifest("latest.yml"),
+  ]);
 
-export default function Home() {
+  const latestMac = macManifest ?? {
+    version: CURRENT_VERSION,
+    url: MAC_DOWNLOAD_URL,
+  };
+  const latestWindows = windowsManifest ?? {
+    version: CURRENT_VERSION,
+    url: WINDOWS_DOWNLOAD_URL,
+  };
+
+  const softwareAppStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "StageFlo",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "macOS, Windows, Linux",
+    description:
+      "Open-source worship presentation software for songs, scripture, media, overlays, and multi-screen outputs.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    url: "https://stageflo.app/",
+    downloadUrl: [latestMac.url, latestWindows.url],
+  };
+
   return (
     <div className="site-shell">
       <script
@@ -305,18 +345,21 @@ export default function Home() {
             StageFlo helps worship teams prepare and present with confidence across operator,
             projector, stage, and lower-third displays, including a mobile remote singer view for on-stage teams.
           </p>
+          <p className="lead">
+            Latest builds: macOS v{latestMac.version} and Windows v{latestWindows.version}.
+          </p>
           <div className="cta-row">
             <a
               className="button button-primary"
-              href={MAC_DOWNLOAD_URL}
+              href={latestMac.url}
             >
-              Download for macOS
+              Download macOS v{latestMac.version}
             </a>
             <a
               className="button button-secondary"
-              href={WINDOWS_DOWNLOAD_URL}
+              href={latestWindows.url}
             >
-              Download for Windows
+              Download Windows v{latestWindows.version}
             </a>
           </div>
         </section>
@@ -555,11 +598,13 @@ export default function Home() {
                 <a
                   href={
                     platform === "macOS"
-                      ? MAC_DOWNLOAD_URL
-                      : WINDOWS_DOWNLOAD_URL
+                      ? latestMac.url
+                      : latestWindows.url
                   }
                 >
-                  Open Downloads
+                  {platform === "macOS"
+                    ? `Open Downloads (v${latestMac.version})`
+                    : `Open Downloads (v${latestWindows.version})`}
                 </a>
               </article>
             ))}
