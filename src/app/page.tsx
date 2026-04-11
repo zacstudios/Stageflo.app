@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import GatedDownloadLink from "./components/gatedDownloadLink";
 
 const CURRENT_VERSION = "1.5.0";
 const RELEASE_BASE_URL = "https://github.com/zacstudios/Stageflo.app/releases/download/v1.0.0-desktop";
@@ -355,18 +356,22 @@ export default async function Home() {
             Latest builds: macOS v{latestMac.version} and Windows v{latestWindows.version}.
           </p>
           <div className="cta-row">
-            <a
+            <GatedDownloadLink
               className="button button-primary"
               href={latestMacDownloadUrl}
+              source="desktop"
+              formTitle="Download StageFlo for macOS"
             >
               Download macOS v{latestMac.version}
-            </a>
-            <a
+            </GatedDownloadLink>
+            <GatedDownloadLink
               className="button button-secondary"
               href={latestWindows.url}
+              source="desktop"
+              formTitle="Download StageFlo for Windows"
             >
               Download Windows v{latestWindows.version}
-            </a>
+            </GatedDownloadLink>
           </div>
         </section>
 
@@ -382,7 +387,9 @@ export default async function Home() {
               <article className="install-card reveal" key={card.title}>
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
-                <a href={card.href}>{card.label}</a>
+                <GatedDownloadLink href={card.href} source="resource" formTitle={card.title}>
+                  {card.label}
+                </GatedDownloadLink>
               </article>
             ))}
           </div>
@@ -601,17 +608,19 @@ export default async function Home() {
                     <li key={step}>{step}</li>
                   ))}
                 </ol>
-                <a
+                <GatedDownloadLink
                   href={
                     platform === "macOS"
                       ? latestMacDownloadUrl
                       : latestWindows.url
                   }
+                  source="desktop"
+                  formTitle={`Download StageFlo for ${platform}`}
                 >
                   {platform === "macOS"
                     ? `Open Downloads (v${latestMac.version})`
                     : `Open Downloads (v${latestWindows.version})`}
-                </a>
+                </GatedDownloadLink>
               </article>
             ))}
           </div>
