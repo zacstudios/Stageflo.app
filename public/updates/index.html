@@ -7,12 +7,14 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f6f4ee;
-        --panel: rgba(255, 255, 255, 0.82);
+        --bg: #f4efe6;
+        --panel: rgba(255, 252, 245, 0.84);
         --text: #1f2520;
         --muted: #5f685e;
         --accent: #1f6a52;
+        --accent-soft: rgba(31, 106, 82, 0.12);
         --border: rgba(31, 37, 32, 0.12);
+        --danger: #9a3412;
       }
 
       * {
@@ -25,12 +27,13 @@
         font-family: "Avenir Next", "Segoe UI", sans-serif;
         background:
           radial-gradient(circle at top left, rgba(31, 106, 82, 0.16), transparent 32%),
+          radial-gradient(circle at bottom right, rgba(191, 90, 36, 0.12), transparent 28%),
           linear-gradient(180deg, #fcfaf5 0%, var(--bg) 100%);
         color: var(--text);
       }
 
       main {
-        width: min(760px, calc(100% - 32px));
+        width: min(900px, calc(100% - 32px));
         margin: 64px auto;
         padding: 32px;
         border: 1px solid var(--border);
@@ -80,24 +83,196 @@
         border: 1px solid var(--border);
         background: rgba(255, 255, 255, 0.7);
       }
+
+      .eyebrow {
+        margin-bottom: 10px;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        margin-top: 28px;
+      }
+
+      .metric {
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .button.secondary {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .status-ok {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .status-error {
+        color: var(--danger);
+        font-weight: 700;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
     </style>
   </head>
   <body>
     <main>
+      <div class="eyebrow">StageFlo Update Feed</div>
       <h1>StageFlo Updates</h1>
       <p>
-        This path hosts the macOS auto-update feed for StageFlo. The Electron app checks this location for files such as
-        <code>latest-mac.yml</code> and the matching signed ZIP package.
+        This page shows the live public auto-update feed for StageFlo. The Windows app checks
+        <code>/updates/latest.yml</code>, then downloads the installer from the public website release assets.
       </p>
+
       <div class="card">
         <p>
-          If you are looking for a manual installer, go to
+          If you are looking for the normal manual download page, go to
           <a href="/downloads/">/downloads/</a>.
         </p>
         <p>
-          If no release has been published yet, the update feed files will not appear here until the first mac release workflow completes.
+          This page is for visibility only. The actual updater reads the manifest directly and does not need this page to function.
         </p>
       </div>
+
+      <div class="grid">
+        <section class="metric">
+          <strong>Current Windows Version</strong>
+          <p id="version">Loading…</p>
+        </section>
+        <section class="metric">
+          <strong>Installer Size</strong>
+          <p id="size">Loading…</p>
+        </section>
+        <section class="metric">
+          <strong>Release Date</strong>
+          <p id="release-date">Loading…</p>
+        </section>
+      </div>
+
+      <div class="card">
+        <p id="status" class="status-ok">Checking update manifest…</p>
+        <div class="actions">
+          <a id="download-link" class="button" href="/downloads/">Open Downloads</a>
+          <a class="button secondary" href="/updates/latest.yml">View latest.yml</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p><strong>How this works</strong></p>
+        <ul>
+          <li>The app checks <code>/updates/latest.yml</code> for the latest Windows version.</li>
+          <li>The manifest points to a public release asset hosted in the site repository.</li>
+          <li>Large installers stay out of GitHub Pages git history, so deploys remain reliable.</li>
+        </ul>
+      </div>
     </main>
+
+    <script>
+      function formatBytes(bytes) {
+        if (!Number.isFinite(bytes) || bytes <= 0) return 'Unknown';
+        const units = ['B', 'KB', 'MB', 'GB'];
+        let value = bytes;
+        let unitIndex = 0;
+        while (value >= 1024 && unitIndex < units.length - 1) {
+          value /= 1024;
+          unitIndex += 1;
+        }
+        return `${value.toFixed(value >= 10 || unitIndex === 0 ? 0 : 1)} ${units[unitIndex]}`;
+      }
+
+      function parseManifest(text) {
+        const version = text.match(/^version:\s*(.+)$/m)?.[1]?.trim();
+        const url = text.match(/^\s*- url:\s*(.+)$/m)?.[1]?.trim();
+        const sizeText = text.match(/^\s*size:\s*(\d+)$/m)?.[1]?.trim();
+        const releaseDate = text.match(/^releaseDate:\s*'(.+)'$/m)?.[1]?.trim();
+
+        return {
+          version,
+          url,
+          size: sizeText ? Number(sizeText) : null,
+          releaseDate
+        };
+      }
+
+      async function loadManifest() {
+        const status = document.getElementById('status');
+        const version = document.getElementById('version');
+        const size = document.getElementById('size');
+        const releaseDate = document.getElementById('release-date');
+        const downloadLink = document.getElementById('download-link');
+
+        try {
+          const response = await fetch('/updates/latest.yml', { cache: 'no-store' });
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const manifest = parseManifest(await response.text());
+
+          version.textContent = manifest.version || 'Unknown';
+          size.textContent = formatBytes(manifest.size);
+          releaseDate.textContent = manifest.releaseDate
+            ? new Date(manifest.releaseDate).toLocaleString()
+            : 'Unknown';
+
+          if (manifest.url) {
+            downloadLink.href = manifest.url;
+            downloadLink.textContent = 'Download Current Windows Installer';
+          }
+
+          status.textContent = `Windows update ${manifest.version || 'available'} is live.`;
+          status.className = 'status-ok';
+        } catch (error) {
+          version.textContent = 'Unavailable';
+          size.textContent = 'Unavailable';
+          releaseDate.textContent = 'Unavailable';
+          downloadLink.href = '/downloads/';
+          downloadLink.textContent = 'Open Downloads';
+          status.textContent = `Update manifest could not be loaded right now.`;
+          status.className = 'status-error';
+        }
+      }
+
+      loadManifest();
+    </script>
   </body>
 </html>
