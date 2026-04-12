@@ -132,9 +132,9 @@ export default async function DownloadsPage() {
               <article className="install-card reveal" key={card.title}>
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
-                <GatedDownloadLink href={card.href} source="resource" formTitle={card.title}>
+                <a className="download-gate-inline-link" href={card.href} target="_blank" rel="noopener noreferrer">
                   {card.label}
-                </GatedDownloadLink>
+                </a>
               </article>
             ))}
           </div>
