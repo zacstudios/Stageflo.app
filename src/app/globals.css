@@ -41,6 +41,24 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
+
+.download-gate-inline-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--accent-light);
+  cursor: pointer;
+  text-align: left;
+}
+
+.download-gate-inline-link:hover {
+  color: #ddd6fe;
+}
+
 .site-shell {
   max-width: 1120px;
   margin: 0 auto;

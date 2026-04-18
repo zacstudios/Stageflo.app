@@ -2,11 +2,17 @@
   "name": "stageflo.github.io",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:prod": "eslint --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "verify:prod": "npm run lint:prod && npm run typecheck && npm run build"
   },
   "dependencies": {
     "next": "16.2.2",

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "StageFlo Feedback and Bug Reports",
@@ -26,15 +28,15 @@ export default function Feedback() {
   return (
     <div className="site-shell">
       <header className="top-nav">
-        <a className="brand" href="/" aria-label="StageFlo home">
-          <img src="/stageflo-icon.png" alt="StageFlo" width={30} height={30} />
+        <Link className="brand" href="/" aria-label="StageFlo home">
+          <Image src="/stageflo-icon.png" alt="StageFlo" width={30} height={30} />
           <span>StageFlo</span>
-        </a>
+        </Link>
         <nav>
-          <a href="/#features">Features</a>
-          <a href="/#screenshots">Screenshots</a>
-          <a href="/#install">Install</a>
-          <a href="/">Home</a>
+          <Link href="/#features">Features</Link>
+          <Link href="/#screenshots">Screenshots</Link>
+          <Link href="/#install">Install</Link>
+          <Link href="/">Home</Link>
         </nav>
       </header>
 
@@ -89,7 +91,7 @@ export default function Feedback() {
             <article className="install-card reveal">
               <h3>View Known Issues</h3>
               <p style={{ color: "var(--muted)", lineHeight: "1.55" }}>
-                Check the issue tracker to see what's being worked on and what other users have reported.
+                Check the issue tracker to see what&apos;s being worked on and what other users have reported.
               </p>
               <a
                 href="https://github.com/zacstudios/Stageflo.app/issues"
@@ -145,9 +147,9 @@ export default function Feedback() {
             Thank you for helping make StageFlo better for worship teams everywhere.
           </p>
           <div className="cta-row" style={{ justifyContent: "center", marginTop: "1.5rem" }}>
-            <a href="/" className="button button-secondary">
+            <Link href="/" className="button button-secondary">
               Back to Home
-            </a>
+            </Link>
           </div>
         </section>
       </main>

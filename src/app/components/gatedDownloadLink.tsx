@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 type GatedDownloadLinkProps = {
   href: string;
@@ -29,6 +30,11 @@ export default function GatedDownloadLink({
   const [consent, setConsent] = useState(false);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -110,7 +116,8 @@ export default function GatedDownloadLink({
     <>
       <a
         href={href}
-        className={className}
+        className={className ?? "download-gate-inline-link"}
+        aria-haspopup="dialog"
         onClick={(event) => {
           event.preventDefault();
           setIsOpen(true);
@@ -119,7 +126,8 @@ export default function GatedDownloadLink({
         {children}
       </a>
 
-      {isOpen ? (
+      {isOpen && isMounted
+        ? createPortal(
         <div className="download-gate-overlay" role="presentation" onClick={resetAndClose}>
           <section
             className="download-gate-modal"
@@ -227,7 +235,8 @@ export default function GatedDownloadLink({
             </form>
           </section>
         </div>
-      ) : null}
+          , document.body)
+        : null}
     </>
   );
 }
